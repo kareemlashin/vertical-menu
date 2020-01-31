@@ -1,0 +1,170 @@
+/* mixin !! */
+@mixin backgroundImg($url, $height, $width) {
+    background-image: url($url);
+    height: $height;
+    width: $width;
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+@mixin Shdow() {
+    text-shadow: 0px 0px 30px rgba(255, 255, 255, .7);
+
+}
+
+@mixin overly($rgbBack) {
+    background-color: $rgbBack;
+    width: 100%;
+    height: 100vh;
+}
+
+/*  Constant ? */
+ul {
+    list-style: none;
+}
+
+a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+}
+
+nav {
+
+    @include overly(rgba(0, 0, 0, 0.9));
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    li {
+        color: #fff;
+    }
+
+    ul {
+        line-height: 50px;
+
+
+        font: {
+            size: 20px;
+            weight: 600;
+        }
+    }
+
+
+
+    .main-menu {
+        position: relative;
+        width: 20%;
+
+        a {
+            cursor: pointer;
+        }
+
+        li>a:hover {
+            @include Shdow();
+        }
+
+        .sub-nav {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            height: 100%;
+            left: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: 1s all;
+            z-index: 12;
+
+            li>a:hover {
+                @include Shdow();
+            }
+
+            .third-nav {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                height: 100%;
+                left: 100%;
+                opacity: 0;
+                visibility: hidden;
+                transition: 1s all;
+                z-index: 12;
+
+                li>a:hover {
+                    @include Shdow();
+                }
+
+            }
+
+            li:hover .third-nav {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+
+
+
+        li:hover .sub-nav {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    @media (max-width:992px) {
+        .main-menu {
+            width: 33%;
+        }
+    }
+
+    @media (max-width:767px) {
+        .main-menu {
+            font-size: 15px;
+            width: 40%;
+        }
+
+        ul {
+            li {
+                a {
+                    font-size: 15px;
+
+                }
+            }
+
+            font-size: 15px;
+        }
+    }
+
+
+    @media (max-width:354px) {
+        .main-menu {
+            width: 35%;
+        }
+
+        ul {
+            font-size: 15px;
+        }
+    }
+
+    #close {
+        color: #fff;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        cursor: pointer;
+    }
+
+    .nav-menu {
+        height: 100%;
+    }
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+}
